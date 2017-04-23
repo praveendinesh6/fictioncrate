@@ -5,6 +5,10 @@ var minifyCSS = require('gulp-minify-css')
 var watch = require('gulp-watch')
 var server = require('gulp-server-livereload')
 
+gulp.task('clean', function () {
+  exec('rm -rf dist && mkdir dist')
+})
+
 gulp.task('buildHTML', function () {
   gulp.src('content/*.html')
   .pipe(minify())
@@ -27,7 +31,7 @@ gulp.task('copyStatic', function () {
   .pipe(gulp.dest('dist/images'))
 })
 
-gulp.task('build', ['buildHTML', 'buildCSS', 'buildJS', 'copyStatic'], function () {
+gulp.task('build', ['clean', 'buildHTML', 'buildCSS', 'buildJS', 'copyStatic'], function () {
   console.log('Building Site')
 })
 
@@ -61,6 +65,7 @@ gulp.task('server', ['devBuild'], function () {
     directoryListing: false,
     open: true
   }))
+
   /* Watch files and run tasks to update files */
   watch('assets/css/*.css', function (events, done) {
     console.log('Building CSS files..')
