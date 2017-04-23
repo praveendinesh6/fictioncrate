@@ -21,6 +21,10 @@
     "gulp": "^3.9.1",
     "gulp-minify": "^0.0.15",
     "gulp-minify-css": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-server-livereload": "^1.9.2", 
+    "gulp-watch": "^4.3.11",
+    "http-server": "^0.9.0",
     "metalsmith": "^2.3.0",
     "standard": "^10.0.2"
   }
