@@ -18,7 +18,7 @@ gulp.task('buildCSS', function () {
 })
 
 gulp.task('buildJS', function () {
-  gulp.src('assets/css/*.js')
+  gulp.src('assets/js/*.js')
   .pipe(gulp.dest('dist/js'))
 })
 
@@ -27,7 +27,7 @@ gulp.task('copyStatic', function () {
   .pipe(gulp.dest('dist/images'))
 })
 
-gulp.task('build', ['buildHTML', 'buildCSS', 'copyStatic'], function () {
+gulp.task('build', ['buildHTML', 'buildCSS', 'buildJS', 'copyStatic'], function () {
   console.log('Building Site')
 })
 
@@ -43,6 +43,9 @@ gulp.task('deploy', ['build'], function () {
 gulp.task('devBuild', function () {
   gulp.src('assets/css/*.css')
   .pipe(gulp.dest('build/css'))
+
+  gulp.src('assets/js/*.js')
+  .pipe(gulp.dest('build/js'))
 
   gulp.src('assets/images/*.*')
   .pipe(gulp.dest('build/images'))
