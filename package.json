@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Fiction Crate webiste",
   "main": "site.js",
+  "main": "index.js",
   "scripts": {
     "test": "standard"
   },
