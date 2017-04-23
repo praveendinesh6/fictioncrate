@@ -1,0 +1,26 @@
+{
+  "name": "fictioncrate",
+  "version": "0.0.1",
+  "description": "Fiction Crate webiste",
+  "main": "site.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrisjose/fictioncrate.git"
+  },
+  "author": "harrisjose@outlook.com",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/harrisjose/fictioncrate/issues"
+  },
+  "homepage": "https://github.com/harrisjose/fictioncrate#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^0.0.15",
+    "gulp-minify-css": "^1.2.4",
+    "metalsmith": "^2.3.0",
+    "standard": "^10.0.2"
+  }
+}
