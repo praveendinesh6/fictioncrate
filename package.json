@@ -1,0 +1,23 @@
+{
+  "name": "fictioncrate",
+  "version": "0.0.1",
+  "description": "Fiction Crate webiste",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrisjose/fictioncrate.git"
+  },
+  "author": "harrisjose@outlook.com",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/harrisjose/fictioncrate/issues"
+  },
+  "homepage": "https://github.com/harrisjose/fictioncrate#readme",
+  "dependencies": {
+    "metalsmith": "^2.3.0",
+    "standard": "^10.0.2"
+  }
+}
