@@ -1,47 +1,41 @@
 var gulp = require('gulp')
-var exec = require('child_process').exec
 var minify = require('gulp-minify')
 var minifyCSS = require('gulp-minify-css')
 var watch = require('gulp-watch')
 var server = require('gulp-server-livereload')
+var remove = require('rimraf')
+var exec = require('exec-chainable')
 
 gulp.task('clean', function () {
-  exec('rm -rf dist && mkdir dist')
+  return remove('./dist', function () {
+    console.log('Removed dist/ and build/')
+  })
 })
 
 gulp.task('buildHTML', function () {
-  gulp.src('content/*.html')
+  return gulp.src('content/*.html')
   .pipe(minify())
   .pipe(gulp.dest('dist/'))
 })
 
 gulp.task('buildCSS', function () {
-  gulp.src('assets/css/*.css')
+  return gulp.src('assets/css/*.css')
   .pipe(minifyCSS())
   .pipe(gulp.dest('dist/css'))
 })
 
 gulp.task('buildJS', function () {
-  gulp.src('assets/js/*.js')
+  return gulp.src('assets/js/*.js')
   .pipe(gulp.dest('dist/js'))
 })
 
 gulp.task('copyStatic', function () {
-  gulp.src('assets/images/*.*')
+  return gulp.src('assets/images/*.*')
   .pipe(gulp.dest('dist/images'))
 })
 
-gulp.task('build', ['clean', 'buildHTML', 'buildCSS', 'buildJS', 'copyStatic'], function () {
+gulp.task('build', ['buildHTML', 'buildCSS', 'buildJS', 'copyStatic'], function () {
   console.log('Building Site')
-})
-
-gulp.task('deploy', ['build'], function () {
-  console.log('Deploying Site to gh-pages')
-  exec('sh lib/deploy.sh', function (err) {
-    if (err) {
-      console.error(err)
-    }
-  })
 })
 
 gulp.task('devBuild', function () {
@@ -80,5 +74,16 @@ gulp.task('server', ['devBuild'], function () {
   watch('content/*.html', function (events, done) {
     console.log('Building HTML files..')
     gulp.start('buildHTML', done)
+  })
+})
+
+gulp.task('deploy', ['build'], function () {
+  console.log('Deploying Site to gh-pages')
+  return exec('sh ./lib/deploy.sh').then(function (stdout) {
+    console.log('\nLog : \n' + stdout)
+  }).done(function () {
+    return remove('./dist', function () {
+      console.log('Complete')
+    })
   })
 })

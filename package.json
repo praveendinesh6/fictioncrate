@@ -2,7 +2,6 @@
   "name": "fictioncrate",
   "version": "0.0.1",
   "description": "Fiction Crate webiste",
-  "main": "site.js",
   "main": "index.js",
   "scripts": {
     "test": "standard"
@@ -18,14 +17,16 @@
   },
   "homepage": "https://github.com/harrisjose/fictioncrate#readme",
   "dependencies": {
+    "exec-chainable": "^0.0.3",
     "gulp": "^3.9.1",
     "gulp-minify": "^0.0.15",
     "gulp-minify-css": "^1.2.4",
     "gulp-plumber": "^1.1.0",
-    "gulp-server-livereload": "^1.9.2", 
+    "gulp-server-livereload": "^1.9.2",
     "gulp-watch": "^4.3.11",
     "http-server": "^0.9.0",
     "metalsmith": "^2.3.0",
+    "rimraf": "^2.6.1",
     "standard": "^10.0.2"
   }
 }
